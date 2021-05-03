@@ -1,8 +1,19 @@
 <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
-	<a class="navbar-brand" href="#">
+	<a class="navbar-brand" routerLink="/" (click)="scrollToTop($event)">
 		<fa-icon [icon]="faFilm"></fa-icon> Movinstagram
 	</a>
 </nav>
 <div class="container py-3">
 	<router-outlet></router-outlet>
 </div>
+
+<button
+	#btnScrollToTop
+	type="button"
+	(click)="scrollToTop($event)"
+	class="btn-scrolltotop"
+	[ngClass]="{ show: windowScrolled }"
+	class="btn btn-sm btn-dark btn-scrolltotop"
+>
+	<fa-icon [icon]="faAngleUp"></fa-icon>
+</button>

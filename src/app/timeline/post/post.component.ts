@@ -1,11 +1,4 @@
-import {
-	Component,
-	EventEmitter,
-	Input,
-	OnInit,
-	Output,
-	AfterViewInit,
-} from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Comment } from '../../comment';
 import { Like } from '../../like';
 import { Post } from '../../post';
@@ -13,15 +6,14 @@ import { TimelineService } from '../../timeline.service';
 import { v4 as uuidv4 } from 'uuid';
 import { faComment } from '@fortawesome/free-regular-svg-icons';
 import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
-
-declare var $: any;
+import { ToastService } from '../../toasts/toast-service';
 
 @Component({
 	selector: 'post',
 	templateUrl: './post.component.html',
 	styleUrls: ['./post.component.scss'],
 })
-export class PostComponent implements OnInit, AfterViewInit {
+export class PostComponent implements OnInit {
 	@Input() post!: Post;
 	@Input() set actualUser(user: string) {
 		this.activeUser = user;
@@ -43,7 +35,10 @@ export class PostComponent implements OnInit, AfterViewInit {
 	isFirstCheckLike: boolean = true;
 	commentText: string = '';
 
-	constructor(private timelineService: TimelineService) {}
+	constructor(
+		private timelineService: TimelineService,
+		public toastService: ToastService
+	) {}
 
 	ngOnInit(): void {
 		const postId = this.post.id;
@@ -57,11 +52,6 @@ export class PostComponent implements OnInit, AfterViewInit {
 			this.isLiked();
 			this.isFirstCheckLike = false;
 		});
-
-		$('[data-toggle="popover"]').popover();
-	}
-	ngAfterViewInit(): void {
-		$('[data-toggle="tooltip"]').tooltip();
 	}
 
 	isLiked = () => {
@@ -85,6 +75,7 @@ export class PostComponent implements OnInit, AfterViewInit {
 				const index = this.likes.indexOf(foundLike);
 				if (index > -1) this.likes.splice(index, 1);
 				this.decrementLike();
+				this.showToastDefault('Disliked :(');
 			});
 		} else {
 			const like: Like = {
@@ -96,6 +87,7 @@ export class PostComponent implements OnInit, AfterViewInit {
 				this.isLike = true;
 				this.likes.push(response);
 				this.incrementLike();
+				this.showToastDefault('Liked :)');
 			});
 		}
 	};
@@ -109,6 +101,7 @@ export class PostComponent implements OnInit, AfterViewInit {
 				postId: this.post.id,
 			};
 			this.timelineService.addComment(comment).subscribe((response) => {
+				this.showToastDefault('Comentário enviado');
 				this.comments.push(response);
 				this.commentText = '';
 				this.incrementComment();
@@ -125,4 +118,10 @@ export class PostComponent implements OnInit, AfterViewInit {
 	decrementLike = () => {
 		this.decrementLikeCount.emit();
 	};
+
+	showToastDefault(message: string) {
+		this.toastService.show(message, {
+			delay: 1500,
+		});
+	}
 }

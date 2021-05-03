@@ -13,6 +13,7 @@ import { TimelineComponent } from './timeline/timeline.component';
 import { PostComponent } from './timeline/post/post.component';
 import { LikeComponent } from './timeline/post/like/like.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ToastsComponent } from './toasts/toasts.component';
 
 @NgModule({
 	declarations: [
@@ -21,6 +22,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 		TimelineComponent,
 		PostComponent,
 		LikeComponent,
+  ToastsComponent,
 	],
 	imports: [
 		BrowserModule,

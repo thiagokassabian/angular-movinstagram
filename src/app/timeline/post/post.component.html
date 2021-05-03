@@ -62,7 +62,6 @@
 						type="text"
 						[(ngModel)]="commentText"
 						class="form-control"
-						id="input-comment"
 						aria-label="Envie seu comentário"
 						aria-describedby="button-comment"
 						placeholder="Envie seu comentário"
@@ -71,7 +70,6 @@
 					<button
 						class="btn btn-link"
 						type="button"
-						id="button-comment"
 						(click)="addComment(commentText)"
 					>
 						<fa-icon [icon]="faAngleRight"></fa-icon>
@@ -81,3 +79,5 @@
 		</div>
 	</div>
 </div>
+
+<app-toasts aria-live="polite" aria-atomic="true"></app-toasts>
