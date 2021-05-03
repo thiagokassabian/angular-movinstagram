@@ -1,0 +1,27 @@
+:host {
+	.avatar {
+		width: 120px;
+		height: 120px;
+	}
+
+	dl {
+		position: relative;
+		top: -2px;
+
+		dt {
+			font-size: 1.5rem;
+		}
+		dd {
+			margin-bottom: 0;
+			font-size: 0.8rem;
+		}
+	}
+
+	select {
+		position: fixed;
+		top: 12px;
+		right: 15px;
+		z-index: 1031;
+		width: auto;
+	}
+}

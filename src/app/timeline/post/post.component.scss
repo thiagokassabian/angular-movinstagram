@@ -1,0 +1,39 @@
+:host {
+	display: block;
+	margin-bottom: 2rem;
+
+	.comment {
+		margin-bottom: 1rem;
+
+		.avatar {
+			width: 35px;
+			height: 35px;
+		}
+	}
+
+	like {
+		cursor: pointer;
+	}
+
+	.count {
+		position: relative;
+		top: -1px;
+	}
+
+	.send-comment {
+		position: relative;
+
+		input {
+			border: none;
+			border-radius: 0;
+			border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+			padding-right: 35px;
+		}
+
+		#button-comment {
+			position: absolute;
+			top: 0;
+			right: 0;
+		}
+	}
+}

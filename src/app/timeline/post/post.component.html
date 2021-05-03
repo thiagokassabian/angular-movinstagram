@@ -1,0 +1,83 @@
+<div class="card shadow rounded-lg">
+	<div class="card-body">
+		<div class="row">
+			<div class="col">
+				<div class="mb-4">
+					<div class="d-flex align-items-center mb-3">
+						<img
+							[src]="post.user | imgPath"
+							class="avatar rounded-circle mr-2"
+						/>
+						<strong>{{ post.user }}</strong>
+					</div>
+					<p class="font-weight-light h3 mb-0">{{ post.title }}</p>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-6 mb-4 mb-md-0">
+				<img [src]="post.picture" class="capa-filme rounded img-fluid w-100" />
+			</div>
+			<div class="col-md-6">
+				<div class="d-flex align-items-center mb-3">
+					<div class="d-flex align-items-center mr-2">
+						<like
+							(likeChange)="likeChange()"
+							[isLike]="isLike"
+							placement="bottom"
+							[ngbTooltip]="tipContent"
+							class="mr-1"
+						></like>
+						<ng-template #tipContent>
+							<div *ngFor="let like of likes">
+								{{ like.user }}
+							</div>
+						</ng-template>
+						<span class="count">{{ likes.length }}</span>
+					</div>
+					<div class="d-flex align-items-center">
+						<fa-icon [icon]="faComment" class="mr-1"></fa-icon>
+						<span class="count">{{ comments.length }}</span>
+					</div>
+				</div>
+				<div class="comments">
+					<div *ngFor="let comment of comments" class="comment">
+						<div class="d-lg-flex align-items-lg-center">
+							<div class="d-flex align-items-center mr-2">
+								<div
+									class="avatar rounded-circle mr-2"
+									[ngStyle]="{
+										'background-image': 'url(' + [comment.user | imgPath] + ')'
+									}"
+								></div>
+								<strong>{{ comment.user }}</strong>
+							</div>
+							<p class="mb-0">{{ comment.comment }}</p>
+						</div>
+					</div>
+				</div>
+
+				<div class="send-comment">
+					<input
+						type="text"
+						[(ngModel)]="commentText"
+						class="form-control"
+						id="input-comment"
+						aria-label="Envie seu comentário"
+						aria-describedby="button-comment"
+						placeholder="Envie seu comentário"
+					/>
+
+					<button
+						class="btn btn-link"
+						type="button"
+						id="button-comment"
+						(click)="addComment(commentText)"
+					>
+						<fa-icon [icon]="faAngleRight"></fa-icon>
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

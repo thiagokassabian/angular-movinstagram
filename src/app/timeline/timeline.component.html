@@ -1,0 +1,45 @@
+<div
+	class="search-results"
+	infiniteScroll
+	[infiniteScrollDistance]="0.1"
+	[infiniteScrollThrottle]="10"
+	[scrollWindow]="true"
+	(scrolled)="onScroll()"
+>
+	<div>
+		<div class="d-flex align-items-center mb-3">
+			<img
+				[src]="timeline | imgPath"
+				class="avatar rounded-circle img-thumbnail mr-3"
+			/>
+			<div>
+				<dl class="list-unstyled mb-0">
+					<dt>{{ timeline }}</dt>
+					<dd>
+						<strong>{{ totalPosts }}</strong> posts
+					</dd>
+					<dd>
+						<strong>{{ totalComments }}</strong> comentários
+					</dd>
+					<dd>
+						<strong>{{ totalLikes }}</strong> likes
+					</dd>
+				</dl>
+			</div>
+		</div>
+	</div>
+
+	<select class="form-control form-control-sm" [(ngModel)]="actualUser">
+		<option *ngFor="let user of users" [value]="user">{{ user }}</option>
+	</select>
+
+	<post
+		*ngFor="let post of posts"
+		[post]="post"
+		[actualUser]="actualUser"
+		(incrementCommentCount)="incrementComment()"
+		(incrementLikeCount)="incrementLike()"
+		(decrementLikeCount)="decrementLike()"
+	></post>
+</div>
+<div *ngIf="spinner">Carregando</div>
