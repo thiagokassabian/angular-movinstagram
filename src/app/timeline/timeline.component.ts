@@ -66,16 +66,18 @@ export class TimelineComponent implements OnInit {
 
 	getPosts = (start: number, limit: number) => {
 		this.timelineService.getPosts(start, limit).subscribe((response) => {
-			this.totalPosts = +response.headers.get('X-Total-Count')!;
-			this.spinner = false;
-			const newPosts = response.body!;
-			if (newPosts.length === 0) {
-				this.notEmptyPost = false;
-			} else {
-				this.posts = this.posts.concat(newPosts);
-				this.notScrolly = true;
-				this.startPage += this.limitPage;
-			}
+			setTimeout(() => {
+				this.totalPosts = +response.headers.get('X-Total-Count')!;
+				this.spinner = false;
+				const newPosts = response.body!;
+				if (newPosts.length === 0) {
+					this.notEmptyPost = false;
+				} else {
+					this.posts = this.posts.concat(newPosts);
+					this.notScrolly = true;
+					this.startPage += this.limitPage;
+				}
+			}, 1000);
 		});
 	};
 

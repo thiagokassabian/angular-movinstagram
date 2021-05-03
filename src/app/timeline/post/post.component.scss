@@ -5,6 +5,10 @@
 	.comment {
 		margin-bottom: 1rem;
 
+		&:last-child {
+			margin-bottom: 0;
+		}
+
 		.avatar {
 			width: 35px;
 			height: 35px;
