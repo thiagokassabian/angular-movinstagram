@@ -2875,6 +2875,18 @@
       "comment": "Supeeeer man",
       "user": "superman",
       "postId": "f841ab78-fe7e-4a19-8d42-ce402cdf7f1b"
+    },
+    {
+      "id": "21d3738d-28b7-47b3-b5a4-5fe392d1f9bd",
+      "comment": "I'm batman!",
+      "user": "batman",
+      "postId": "57f1428f-97d0-444b-96fe-6ddc913aed5e"
+    },
+    {
+      "id": "29a6501a-3c69-4553-9726-dee4b466044d",
+      "comment": "Spiderman!!!!",
+      "user": "spiderMan",
+      "postId": "57f1428f-97d0-444b-96fe-6ddc913aed5e"
     }
   ],
   "likes": [
@@ -2904,11 +2916,6 @@
       "user": "ironMan"
     },
     {
-      "id": "81781c64-195a-4d3d-8407-743ca1161c63",
-      "postId": "57f1428f-97d0-444b-96fe-6ddc913aed5e",
-      "user": "spiderMan"
-    },
-    {
       "id": "6eed9b0b-f640-414a-810e-e9db43e4ee76",
       "postId": "57f1428f-97d0-444b-96fe-6ddc913aed5e",
       "user": "wonderWoman"
@@ -2917,11 +2924,6 @@
       "id": "4f584455-b317-4c8d-a0eb-e3f536a99460",
       "postId": "a759fa20-3a5d-43c5-a79c-40271fbfb878",
       "user": "antman"
-    },
-    {
-      "id": "082de1ce-41dd-4a37-902a-4549e0325c92",
-      "postId": "a759fa20-3a5d-43c5-a79c-40271fbfb878",
-      "user": "aquaman"
     },
     {
       "id": "cc4bb5ea-7273-47c5-a5fa-71fa0f1b8a8c",
@@ -4951,6 +4953,11 @@
     {
       "id": "043729a5-3a4d-47d1-ad54-4792538c3287",
       "postId": "a759fa20-3a5d-43c5-a79c-40271fbfb878",
+      "user": "superman"
+    },
+    {
+      "id": "6611bde5-f614-4c18-8299-276ec121ea3f",
+      "postId": "57f1428f-97d0-444b-96fe-6ddc913aed5e",
       "user": "superman"
     }
   ],
